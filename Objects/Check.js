@@ -13,6 +13,14 @@ class Check extends GameObject {
 		console.log("pijak");
 		this.whoPijakMe = orang 
 		const triggerAtPos = state.map.checkAllTrigger();
-		console.log(triggerAtPos);
+		triggerAtPos.forEach(element => {
+			if (element.whoPijakMe instanceof Box){
+				const trapData = element.data;
+				console.log("Data dari Trap:", trapData);
+			}else{
+				console.log("null");
+				
+			}
+		});
 	}
 }
