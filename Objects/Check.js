@@ -1,7 +1,6 @@
 class Check extends GameObject {
 	constructor(config) {
 		super(config);
-		this.data = config.data;
 		this.isCheck = true;
 		this.whoPijakMe = null
 	}
@@ -14,13 +13,13 @@ class Check extends GameObject {
 		this.whoPijakMe = orang 
 		const triggerAtPos = state.map.checkAllTrigger();
 		triggerAtPos.forEach(element => {
-			if (element.whoPijakMe instanceof Box){
-				const trapData = element.data;
-				console.log("Data dari Trap:", trapData);
-			}else{
-				console.log("null");
-				
+			if (element.whoPijakMe instanceof Box) {
+				let dataTrap = element.data
+				let dataBox = element.whoPijakMe.data
+				console.log("Data trap:", dataTrap);
+				console.log("Data whoPijakMe:", dataBox);
 			}
+				
 		});
 	}
 }
