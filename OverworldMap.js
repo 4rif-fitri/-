@@ -30,13 +30,24 @@ class OverworldMap{
 			return obj.x === x && obj.y === y;
 		});
 		// console.log(depanMc);
-
-		if (depanMc && depanMc.isBox && !depanMc.isTrap) {
+		
+		//depan mc dan idalah box
+		if (depanMc && depanMc.isBox) {
 			return depanMc;
 		}
 
 		// 2. Semak dinding statik map
 		return this.walls[`${x},${y}`] || false;
+	}
+	checkForTrigger(x, y) {
+		return Object.values(this.gameObject).find(obj => {
+			// Cari apa-apa objek di x,y yang ada fungsi pijak
+			return obj.x === x && obj.y === y && (obj.isCheck || obj.isTrap);
+		});
+	}
+
+	checkAllTrigger() {
+		return Object.values(this.gameObject).filter(obj => obj.isTrap)
 	}
 }
 window.OverworldMap = {
@@ -44,7 +55,7 @@ window.OverworldMap = {
 		lowerSrc: "./images/maps/DemoLower.png",
 		upperSrc: "./images/maps/DemoUpper.png",
 		gameObject: {
-			npc1: new Box({
+			box: new Box({
 				x: utils.withGrid(6),
 				y: utils.withGrid(6),
 				data: 5,
@@ -54,18 +65,24 @@ window.OverworldMap = {
 				x: utils.withGrid(5),
 				y: utils.withGrid(5),
 				data: 5,
-				src: "./images/characters/people/npc1.png"
+				src: "./images/characters/people/npc4.png"
+			}),
+			trap2: new Trap({
+				x: utils.withGrid(4),
+				y: utils.withGrid(5),
+				data: 2,
+				src: "./images/characters/people/npc4.png"
+			}),
+			check: new Check({
+				x: utils.withGrid(5),
+				y: utils.withGrid(10),
+				src: "./images/characters/people/npc5.png"
 			}),
 			hero: new Person({
 				isPlayerControlled: true,
 				x: utils.withGrid(5),
 				y: utils.withGrid(6),
 			}),
-			// Check: new Check({
-			// 	x: utils.withGrid(4),
-			// 	y: utils.withGrid(4),
-			// 	src: "./images/characters/people/npc1.png"
-			// }),
 		},
 		walls: {
 			[utils.asGridCoords(1, 3)]: true,
@@ -101,6 +118,7 @@ window.OverworldMap = {
 			[utils.asGridCoords(2, 10)]: true,
 			[utils.asGridCoords(1, 10)]: true,
 
+			//wall kiri
 			[utils.asGridCoords(0, 4)]: true,
 			[utils.asGridCoords(0, 5)]: true,
 			[utils.asGridCoords(0, 6)]: true,
@@ -108,7 +126,7 @@ window.OverworldMap = {
 			[utils.asGridCoords(0, 8)]: true,
 			[utils.asGridCoords(0, 9)]: true,
 
-
+			//petak tengah
 			[utils.asGridCoords(7, 6)]: true,
 			[utils.asGridCoords(8, 6)]: true,
 			[utils.asGridCoords(7, 7)]: true,

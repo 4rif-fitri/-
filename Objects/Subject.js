@@ -16,7 +16,12 @@ class Subject extends GameObject {
 		if (this.movingProgressRemaining > 0) {
 			this.updatePosition();
 
-
+				const triggerAtPos = state.map.checkForTrigger(this.x, this.y);
+				
+				if (triggerAtPos != undefined){ //kalau depan mc takde pape
+					triggerAtPos.pijak(state,this)
+				}
+				
 
 		} else {
 			//case key bord ready and hnave arow press
@@ -37,12 +42,10 @@ class Subject extends GameObject {
 			// Simpan hasil semakan ruang ke dalam variable targetSpace
 			const targetSpace = state.map.isSpaceTaken(this.x, this.y, this.direction);
 			
-			console.log(targetSpace);
-				
 			if (targetSpace) {
-
+				
 				// Jika MC melanggar Item/Person, suruh objek itu 'walk' ke arah yang sama
-				if (this.isPlayerControlled && (targetSpace instanceof Person || targetSpace instanceof Box)) {
+				if (this.isPlayerControlled && targetSpace instanceof Box) {
 					targetSpace.startBehavior(state, {
 						type: "walk",
 						direction: this.direction
