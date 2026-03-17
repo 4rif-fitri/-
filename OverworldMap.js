@@ -31,11 +31,7 @@ class OverworldMap{
 		});
 		// console.log(depanMc);
 
-		if (depanMc && depanMc.isTrap){
-			return depanMc;
-		}
-		
-		if (depanMc && depanMc.isBox) {
+		if (depanMc && depanMc.isBox && !depanMc.isTrap) {
 			return depanMc;
 		}
 
@@ -48,11 +44,6 @@ window.OverworldMap = {
 		lowerSrc: "./images/maps/DemoLower.png",
 		upperSrc: "./images/maps/DemoUpper.png",
 		gameObject: {
-			hero: new Person({
-				isPlayerControlled: true,
-				x: utils.withGrid(5),
-				y: utils.withGrid(6),
-			}),
 			npc1: new Box({
 				x: utils.withGrid(6),
 				y: utils.withGrid(6),
@@ -64,6 +55,11 @@ window.OverworldMap = {
 				y: utils.withGrid(5),
 				data: 5,
 				src: "./images/characters/people/npc1.png"
+			}),
+			hero: new Person({
+				isPlayerControlled: true,
+				x: utils.withGrid(5),
+				y: utils.withGrid(6),
 			}),
 			// Check: new Check({
 			// 	x: utils.withGrid(4),
