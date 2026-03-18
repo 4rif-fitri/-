@@ -39,14 +39,35 @@ class Overworld{
 		this.directionInput = new DirectionInput()
 		this.directionInput.init()
 
-		window.overworld = this;
-		this.initialState = {...window.OverworldMap.DemoRoom.gameObject}
+		// KITA CAPTURE KOORDINAT SAHAJA (Manual Snapshot)
+		this.initialState = {};
+		Object.keys(this.map.gameObject).forEach(key => {
+			this.initialState[key] = {
+				x: this.map.gameObject[key].x,
+				y: this.map.gameObject[key].y,
+				direction: this.map.gameObject[key].direction
+			};
+		});
 		
+		window.overworld = this;
 		this.startGameLoop()
 	}
 
 	resetLevel() {
-		console.log(this.initialState);
-		
+		console.log("Resetting...");
+
+		Object.keys(this.initialState).forEach(key => {
+			const obj = this.map.gameObject[key];
+			const asal = this.initialState[key];
+
+			// if (obj) {
+				obj.x = asal.x;
+				obj.y = asal.y;
+				obj.direction = asal.direction;
+
+				obj.whoPijakMe = null;
+			// }
+		});
+
 	}
 }

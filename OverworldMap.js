@@ -76,6 +76,12 @@ window.OverworldMap = {
 				data: 15,
 				src: "./images/characters/people/npc3.png"
 			}),
+			box4: new Box({
+				x: utils.withGrid(1),
+				y: utils.withGrid(6),
+				data: 15,
+				src: "./images/characters/people/npc3.png"
+			}),
 			trap1: new Trap({
 				x: utils.withGrid(4),
 				y: utils.withGrid(5),
@@ -90,6 +96,12 @@ window.OverworldMap = {
 			}),
 			trap3: new Trap({
 				x: utils.withGrid(2),
+				y: utils.withGrid(5),
+				data: 15,
+				src: "./images/characters/people/npc4.png"
+			}),
+			trap4: new Trap({
+				x: utils.withGrid(1),
 				y: utils.withGrid(5),
 				data: 15,
 				src: "./images/characters/people/npc4.png"
