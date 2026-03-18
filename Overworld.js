@@ -8,7 +8,6 @@ class Overworld{
 	startGameLoop() {
 		console.log(this.map.gameObject.hero);
 
-
 		let step = () => {
 			//cler frame sebelumnya
 			this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -39,6 +38,15 @@ class Overworld{
 		this.map = new OverworldMap(window.OverworldMap.DemoRoom)
 		this.directionInput = new DirectionInput()
 		this.directionInput.init()
+
+		window.overworld = this;
+		this.initialState = {...window.OverworldMap.DemoRoom.gameObject}
+		
 		this.startGameLoop()
+	}
+
+	resetLevel() {
+		console.log(this.initialState);
+		
 	}
 }

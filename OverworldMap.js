@@ -42,12 +42,15 @@ class OverworldMap{
 	checkForTrigger(x, y) {
 		return Object.values(this.gameObject).find(obj => {
 			// Cari apa-apa objek di x,y yang ada fungsi pijak
-			return obj.x === x && obj.y === y && (obj.isCheck || obj.isTrap);
+			return obj.x === x && obj.y === y && (obj.isCheck || obj.isTrap || obj.isReset);
 		});
 	}
 
 	checkAllTrigger() {
 		return Object.values(this.gameObject).filter(obj => obj.isTrap)
+	}
+	checkResetButton() {
+		return Object.values(this.gameObject).filter(obj => obj.isReset)
 	}
 }
 window.OverworldMap = {
