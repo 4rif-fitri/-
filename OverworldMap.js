@@ -55,27 +55,50 @@ window.OverworldMap = {
 		lowerSrc: "./images/maps/DemoLower.png",
 		upperSrc: "./images/maps/DemoUpper.png",
 		gameObject: {
-			box: new Box({
-				x: utils.withGrid(6),
+			box1: new Box({
+				x: utils.withGrid(4),
 				y: utils.withGrid(6),
 				data: 5,
 				src: "./images/characters/people/npc3.png"
 			}),
+			box2: new Box({
+				x: utils.withGrid(3),
+				y: utils.withGrid(6),
+				data: 10,
+				src: "./images/characters/people/npc3.png"
+			}),
+			box3: new Box({
+				x: utils.withGrid(2),
+				y: utils.withGrid(6),
+				data: 15,
+				src: "./images/characters/people/npc3.png"
+			}),
 			trap1: new Trap({
-				x: utils.withGrid(5),
+				x: utils.withGrid(4),
 				y: utils.withGrid(5),
 				data: 5,
 				src: "./images/characters/people/npc4.png"
 			}),
 			trap2: new Trap({
-				x: utils.withGrid(4),
+				x: utils.withGrid(3),
 				y: utils.withGrid(5),
-				data: 2,
+				data: 10,
+				src: "./images/characters/people/npc4.png"
+			}),
+			trap3: new Trap({
+				x: utils.withGrid(2),
+				y: utils.withGrid(5),
+				data: 15,
 				src: "./images/characters/people/npc4.png"
 			}),
 			check: new Check({
+				x: utils.withGrid(7),
+				y: utils.withGrid(4),
+				src: "./images/characters/people/npc5.png"
+			}),
+			reset: new Reset({
 				x: utils.withGrid(5),
-				y: utils.withGrid(10),
+				y: utils.withGrid(4),
 				src: "./images/characters/people/npc5.png"
 			}),
 			hero: new Person({

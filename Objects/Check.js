@@ -16,8 +16,11 @@ class Check extends GameObject {
 			if (element.whoPijakMe instanceof Box) {
 				let dataTrap = element.data
 				let dataBox = element.whoPijakMe.data
-				console.log("Data trap:", dataTrap);
-				console.log("Data whoPijakMe:", dataBox);
+				if (dataTrap == dataBox){
+					console.log("same");
+				}else{
+					console.log("xsame");
+				}
 			}
 				
 		});
