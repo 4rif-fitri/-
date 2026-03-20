@@ -6,7 +6,6 @@ class Overworld{
 		this.map = null
 	}
 	startGameLoop() {
-		console.log(this.map.gameObject.hero);
 
 		let step = () => {
 			//cler frame sebelumnya
@@ -26,7 +25,7 @@ class Overworld{
 				object.sprite.draw(this.ctx, cameraPerson)
 			})
 
-			this.map.drawUpperImage(this.ctx, cameraPerson)
+			// this.map.drawUpperImage(this.ctx, cameraPerson)
 
 			requestAnimationFrame(() => {
 				step()
